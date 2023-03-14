@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
-const { reviews } = require('../models');
-const { metadata }= require('../models');
+const { reviews, metadata } = require('../models');
 const db = require('../db/index');
 
 afterAll(() => {
   db.end();
 });
 
-describe('get', () => {
+describe('reviews\' get', () => {
   it('should return the expected shape for reviews', (done) => {
     reviews.get(100)
     .then(res => {
@@ -35,7 +34,7 @@ describe('get', () => {
   });
 });
 
-describe('metadata', () => {
+describe('metadata\' get', () => {
   it('should return the expected shape of metadata', (done) => {
     metadata.get(100)
     .then(response => {
