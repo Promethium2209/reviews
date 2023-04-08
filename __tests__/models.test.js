@@ -2,10 +2,6 @@
 const { reviews, metadata } = require('../models');
 const db = require('../db/index');
 
-afterAll(() => {
-  db.end();
-});
-
 describe('reviews\' get', () => {
   it('should return the expected shape for reviews', (done) => {
     reviews.get(100)

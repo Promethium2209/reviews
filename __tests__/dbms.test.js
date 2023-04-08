@@ -8,10 +8,6 @@ const generateRandomId = (table = 'products') => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-afterAll(() => {
-  db.end();
-});
-
 describe('random id generator', () => {
   it('should return an ID within the last 10% of the product ids', () => {
     for (let i = 0; i < 10000; i++) {

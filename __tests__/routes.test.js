@@ -4,11 +4,6 @@ const { app, server } = require('../app');
 const { metadata } = require('../models');
 const db = require('../db/index');
 
-afterAll(() => {
-  db.end();
-  server.close();
-});
-
 describe('GET /reviews', () => {
   it('should return a 200 status code when receive a valid request params', async () => {
     const res = await request(app).get('/reviews/?product_id=1');

@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 const config = require('../config/index');
 
 const dbConfig = {
@@ -10,14 +10,11 @@ const dbConfig = {
   keepAlive: false
 };
 
-const client = new Client(dbConfig);
+const pool = new Pool(dbConfig);
 
-client.connect((err) => {
-  if (err) {
-    console.error('Failed to connect to PostgreSQL:', err);
-  } else {
-    console.log('Connected to PostgreSQL');
-  }
-});
+pool.on('error', err => {
+  console.error(err);
+  process.exit(-1);
+})
 
-module.exports = client;
+module.exports = pool;
